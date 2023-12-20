@@ -135,7 +135,7 @@ app.post("/user",  {
 
 //  app.get('/login',getauthinfo);
 
-app.listen(3010).then(() => {
+app.listen(process.env.PORT).then(() => {
   connectToMongo();
   connectmqtt();
 });
