@@ -1,0 +1,13 @@
+{
+  "type": "service_account",
+  "project_id": "sixgames-45430",
+  "private_key_id": "7283c58cb04b10f1e2a5a03389a87a1b9808c28a",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQDL/O1y2c27gyhn\n3YE7ZB1yp4IzGZ2g/oUGmbRSnhr9KJIVKBA3rSDiY/H1Hhxuef8yXNpSczhGvxFt\nOicmAwiasfPHKkkj13KMVKViKyUfzPTiXO8LbLPi/FrjWzYWFd7IjbUE19Hf1y4x\nF0en9+6DVE+UvA+lBtgB3boR9HfHmgGG0vb+RNFjMqBGlA0QJf9rj8X4rHNNI+QR\n4otZfh/EZt3bH/idHisgK7vqH8ncaRsatGfMy3qM4pUyTgA5/ug42MwBl5Apcyr+\nQm2+g9M1tcYRaEBpC+jaPbwBWq8SOzTP505kkqV4J4xX4c8xIOrUkghqfRaEvBUy\nrrfAWUXLAgMBAAECggEAZR3C/JAfzegVkur3oR+fA1MqlLcJbqFMAroVa3DJMx21\n0Dv0Ug0FhIODkHx1HoRl7qqdZIqN5m/XLRxLBKozTS+SBnOdHuGw/AQHmTKG7A0W\nhNEJg9HGF+n9Cb+Qf4Em1qZ8CWMMO5e4Y4hFMmuRtVMJQdK5NJZAZChrkHPtHikD\nkon0htDLX/VXHAsBsFhhMEXte8PmQHIsBusmPldCUS4jKJBMEDMOl6v7PC1CkFRr\nLaaIsYl2oe+A2pvTOqx0I+Bk/rBBP5Id4rLcfMrhCKibWo1lPpSMuaEtVHQloASI\ndxqphDbCfpXQNkGhGQztrygC+Jbc1QY79roDMirK4QKBgQD2L4fpz9oT6L9CeSec\nI/BAqnflxj2/0+BFMO2GDDNdKxJE78gC5vLWj/MQ1yOC2iXXmJiFttrYMcUQIaIc\ndcJm3ILzBxp3PdJa+CLoH6b7gT0dNaV06Uul1jyJtw1FZLNcdo160a7uOSLs04H/\nVnfArzDfxw2FCmYCzFZtX8004QKBgQDUHr6iPbCv7SQqfM3o0CvyIsl+TcIHss1P\nvr5s6SuQrapo9nmHSFGA7laA39zbbX0ctqcDYAI2rYJzdLiP9e5uByh0aCTAwha6\nbwKy3AuqBe6HDRfJ0x4DlibNEnCa6nyVnlJArRPBetWOaZ5Jiuu/Gs2BqgViHGRV\nyqHkZenkKwKBgQDAV0Rl/bnRYj/D7KpwyHdV3pnMUMU/0YbgKCj7WR7sRNGCQKDQ\n+6Vw04jBeITLICr+tb88gS+cR85CGzTv7WVUPialP8CCty9ZWZLULp6k00VvQ9Gg\ndQFgcPBdXEInHFUyAYHqGlcE0mkiBOIFH4Zyaa3SuE8syYIH36QK0hWeoQKBgDA2\njL3zp6VVEVNW6rZwGoz+uy2qHuABFAl8IWw/01cfIgyZeSX2mg/kHGVOfLSjPjy4\nh12NBPPInE4BybFvBLKdjeRnh3MIqoHVmZdtzHjowD6SC0YkZj4KcudJua58fbTE\nN43byRHBCalE+GVe3hah0PQX4QFb0rJtTD7Nq0vhAoGAS5/aO+nOKIGwIvy6SVMu\n3gjFqkIi7u/nzhbqjA1qwMbyy+UcRLayzC8RFTbwg5O+7V35N9Y3V75ayxiNebHk\n0Y0Rqz0FnbUh0UmYWCa1RL4EfpLjzdycUyN/6L0VwkgHtGxAn5GVNNlNiZFfCu6J\nGjd60pV2Gc3LW+16mo7VPR0=\n-----END PRIVATE KEY-----\n",
+  "client_email": "firebase-adminsdk-9b0sa@sixgames-45430.iam.gserviceaccount.com",
+  "client_id": "111789897171535476553",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/firebase-adminsdk-9b0sa%40sixgames-45430.iam.gserviceaccount.com",
+  "universe_domain": "googleapis.com"
+}

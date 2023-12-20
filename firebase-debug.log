@@ -1,0 +1,34 @@
+[debug] [2023-11-28T07:41:44.183Z] ----------------------------------------------------------------------
+[debug] [2023-11-28T07:41:44.184Z] Command:       /usr/local/bin/node /Users/vishnu/.npm-global/bin/firebase serve --host 3500
+[debug] [2023-11-28T07:41:44.184Z] CLI Version:   12.7.0
+[debug] [2023-11-28T07:41:44.184Z] Platform:      darwin
+[debug] [2023-11-28T07:41:44.185Z] Node Version:  v18.18.2
+[debug] [2023-11-28T07:41:44.185Z] Time:          Tue Nov 28 2023 13:11:44 GMT+0530 (India Standard Time)
+[debug] [2023-11-28T07:41:44.185Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2023-11-28T07:41:44.238Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2023-11-28T07:41:44.238Z] > authorizing via signed-in user (gunreddyvishnu@gmail.com)
+[debug] [2023-11-28T07:41:44.238Z] [iam] checking project sixgames-45430 for permissions ["firebase.projects.get"]
+[debug] [2023-11-28T07:41:44.239Z] >>> [apiv2][query] POST https://cloudresourcemanager.googleapis.com/v1/projects/sixgames-45430:testIamPermissions [none]
+[debug] [2023-11-28T07:41:44.239Z] >>> [apiv2][(partial)header] POST https://cloudresourcemanager.googleapis.com/v1/projects/sixgames-45430:testIamPermissions x-goog-quota-user=projects/sixgames-45430
+[debug] [2023-11-28T07:41:44.239Z] >>> [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/sixgames-45430:testIamPermissions {"permissions":["firebase.projects.get"]}
+[debug] [2023-11-28T07:41:45.624Z] <<< [apiv2][status] POST https://cloudresourcemanager.googleapis.com/v1/projects/sixgames-45430:testIamPermissions 200
+[debug] [2023-11-28T07:41:45.625Z] <<< [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/sixgames-45430:testIamPermissions {"permissions":["firebase.projects.get"]}
+[debug] [2023-11-28T07:41:45.627Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/sixgames-45430 [none]
+[debug] [2023-11-28T07:41:46.204Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/sixgames-45430 200
+[debug] [2023-11-28T07:41:46.204Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/sixgames-45430 {"projectId":"sixgames-45430","projectNumber":"964329108022","displayName":"sixgames","name":"projects/sixgames-45430","resources":{"hostingSite":"sixgames-45430","storageBucket":"sixgames-45430.appspot.com","locationId":"europe-west"},"state":"ACTIVE","etag":"1_5f99edd1-9074-4df8-84f2-43b611755142"}
+[info] 
+[info] === Serving from '/Users/vishnu/Documents/desktop/firebase deploy'...
+[info] 
+[debug] [2023-11-28T07:41:46.213Z] defaultcredentials: writing to file /Users/vishnu/.config/firebase/gunreddyvishnu_gmail_com_application_default_credentials.json
+[debug] [2023-11-28T07:41:46.215Z] Setting GAC to /Users/vishnu/.config/firebase/gunreddyvishnu_gmail_com_application_default_credentials.json {"metadata":{"emulator":{"name":"functions"},"message":"Setting GAC to /Users/vishnu/.config/firebase/gunreddyvishnu_gmail_com_application_default_credentials.json"}}
+[debug] [2023-11-28T07:41:46.215Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/sixgames-45430/adminSdkConfig [none]
+[debug] [2023-11-28T07:41:46.776Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/sixgames-45430/adminSdkConfig 200
+[debug] [2023-11-28T07:41:46.776Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/sixgames-45430/adminSdkConfig {"projectId":"sixgames-45430","storageBucket":"sixgames-45430.appspot.com","locationId":"europe-west"}
+[debug] [2023-11-28T07:41:46.794Z] Error: listen EADDRNOTAVAIL: address not available 0.0.13.172:5000
+    at Server.setupListenHandle [as _listen2] (node:net:1800:21)
+    at listenInCluster (node:net:1865:12)
+    at GetAddrInfoReqWrap.doListen [as callback] (node:net:2014:7)
+    at GetAddrInfoReqWrap.onlookup [as oncomplete] (node:dns:110:8)
+[error] 
+[error] Error: An unexpected error has occurred.
