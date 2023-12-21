@@ -20,4 +20,10 @@ client.on("error", (err) => {
   console.error("Error:", err);
 });
 
+async function publishMessage(topic, message) {
+  client.publish(topic, JSON.stringify(message));
+}
+
 exports.connectmqtt = connectmqtt;
+
+exports.publishMessage = publishMessage;

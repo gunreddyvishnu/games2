@@ -13,15 +13,20 @@ const { error } = require("console");
 
 //////  imports
 
-const { login, verifylogin, validateToken ,registeruser} = require("./modules/auth");
+const {
+  login,
+  verifylogin,
+  validateToken,
+  registeruser,
+} = require("./modules/auth");
 
 const { generateRandomString, validate } = require("./modules/services");
 
 const { connectmqtt } = require("./modules/mqttconnection");
 
+const { updateBalanceNotifier } = require("./modules/notifiers");
 
-
-/// login 
+/// login
 app.post(
   "/login",
   {
@@ -37,7 +42,6 @@ app.post(
   },
   login
 );
-
 
 /// verify login
 app.post(
@@ -58,7 +62,6 @@ app.post(
   verifylogin
 );
 
-
 /// get user info
 app.get("/user", async function (req, res) {
   const token = req.headers["authorization"];
@@ -68,60 +71,51 @@ app.get("/user", async function (req, res) {
   if (userdata) {
     res.send(userdata);
   } else {
-
     res.status(403).send({ status: 403, err: "Invalid token" });
   }
 
   // console.log(userdata);
 });
 
-/// register new user 
-app.post("/user",  {
-  schema: {
-    body: {
-      type: "object",
-      properties: {
-        name: { type: "string" },
-        dp: { type: "string" },
-       
+/// register new user
+app.post(
+  "/user",
+  {
+    schema: {
+      body: {
+        type: "object",
+        properties: {
+          name: { type: "string" },
+          dp: { type: "string" },
+        },
+        required: ["name", "dp"],
       },
-      required: ["name","dp"],
     },
   },
-}, async function (req, res) {
-  const token = req.headers["authorization"];
+  async function (req, res) {
+    const token = req.headers["authorization"];
 
-  var userdata = await validateToken(token);
+    var userdata = await validateToken(token);
 
-  if (userdata) {
-
-    if(validate(userdata["name"])){
-
-
-      res.status(403).send({ status: 403, err: "user already exists" });
-
+    if (userdata) {
+      if (validate(userdata["name"])) {
+        res.status(403).send({ status: 403, err: "user already exists" });
+      } else {
+        res.send(
+          await registeruser({
+            uid: userdata["uid"],
+            name: req.body["name"],
+            dp: req.body["dp"],
+          })
+        );
+      }
+    } else {
+      res.status(403).send({ status: 403, err: "Invalid token" });
     }
-    else{
 
-      res.send(await registeruser({
-
-    
-        uid:userdata["uid"],
-        name:req.body["name"],
-        dp:req.body["dp"],
-        
-      }));
-
-    
-    }
-   
-  } else {
-
-    res.status(403).send({ status: 403, err: "Invalid token" });
+    // console.log(userdata);
   }
-
-  // console.log(userdata);
-});
+);
 
 
 
@@ -131,12 +125,11 @@ app.post("/user",  {
 
 
 
-
-
-//  app.get('/login',getauthinfo);
 const port = process.env.PORT || 3000;
 
 app.listen(port).then(() => {
   connectToMongo();
   connectmqtt();
+
+  updateBalanceNotifier();
 });

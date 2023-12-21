@@ -1,8 +1,5 @@
-function print(data){
-console.log(data)
-
-
+function print(data) {
+  console.log(data);
 }
 
-
-exports.print=print;
+exports.print = print;
