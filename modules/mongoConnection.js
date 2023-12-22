@@ -1,6 +1,6 @@
 const { MongoClient, ServerApiVersion } = require("mongodb");
 const uri =
-  "mongodb+srv://admin:Lr0EeMgmJUJJaAAG@sixgames.vap3vvs.mongodb.net/?retryWrites=true&w=majority";
+  "mongodb+srv://admin:FrZkCI4BZV1ITkE9@sixgames.vap3vvs.mongodb.net/?retryWrites=true&w=majority";
 var ObjectId = require("mongodb").ObjectId;
 
 var mongo = new MongoClient(uri, {

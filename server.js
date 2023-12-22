@@ -13,15 +13,12 @@ const { error } = require("console");
 
 //////  imports
 
-
-
-
 const {
   login,
   verifylogin,
   validateToken,
   registeruser,
-  updateprofile
+  updateprofile,
 } = require("./modules/auth");
 
 const { generateRandomString, validate } = require("./modules/services");
@@ -29,6 +26,9 @@ const { generateRandomString, validate } = require("./modules/services");
 const { connectmqtt } = require("./modules/mqttconnection");
 
 const { updateBalanceNotifier } = require("./modules/notifiers");
+
+
+const {hostGame}=require('./modules/gamemanager');
 
 /// login
 app.post(
@@ -121,25 +121,22 @@ app.post(
   }
 );
 
-
-
 /// Update User data api
 
-
-app.post('/updateprofile', {
-schema: {
- body: {
-type: 'object',
-properties: {
-
-  'dp': { type: 'string' },
-
-},
- required: ['dp'], 
-    }, 
+app.post(
+  "/updateprofile",
+  {
+    schema: {
+      body: {
+        type: "object",
+        properties: {
+          dp: { type: "string" },
+        },
+        required: ["dp"],
+      },
+    },
   },
-   },async (req, res) => { 
-
+  async (req, res) => {
     const token = req.headers["authorization"];
 
     var userdata = await validateToken(token);
@@ -147,73 +144,87 @@ properties: {
     if (userdata) {
       // res.send(userdata);
 
-
-   res.send(await updateprofile({
-    "uid":userdata["uid"],
-    "dp":req.body["dp"]
-   }))
-
+      res.send(
+        await updateprofile({
+          uid: userdata["uid"],
+          dp: req.body["dp"],
+        })
+      );
     } else {
       res.status(403).send({ status: 403, err: "Invalid token" });
     }
-
-   });
-   
+  }
+);
 
 /// Get Game Details Api   { Topic[id] , Thumbnail , Discription }
 
-
-
 // app.get('/games',function(re))
 
+app.get("/games/:gameid", (req, res) => {
+  var gameid = req.params.gameid;
 
-app.get('/games/:gameid', (req, res) => {
-  var gameid=req.params.gameid;
-
-
-  if(validate(gameid)){
-
-    if(gameid=="Ludo"){
-      
-        res.send({
-          "error":false,
-          "data":{
-
-"thumbnail":"Ludi King Betting",
-"name":"",
-"description":""
-
-          }
-        })
-
-
+  if (validate(gameid)) {
+    if (gameid == "Ludo") {
+      res.send({
+        error: false,
+        data: {
+          thumbnail:
+            "https://is4-ssl.mzstatic.com/image/thumb/Purple123/v4/79/a8/5e/79a85eec-a5d7-5624-274e-95d7a358033c/source/512x512bb.jpg",
+          name: "Ludo King",
+          description: "Play Ludo and Enjoy game",
+          id: "ludogame23567",
+        },
+      });
+    } else if (gameid == "TicTacToe") {
+      res.send({
+        error: false,
+        data: {
+          thumbnail:
+            "https://upload.wikimedia.org/wikipedia/commons/7/7d/Super_tic-tac-toe_rules_example.png",
+          name: "Tic Tac Toe",
+          description: "Play Tic tac Toe and Enjoy game",
+          id: "tictacgame23567",
+        },
+      });
+    } else {
+      res.send({
+        error: true,
+        message: "invalid game",
+      });
     }
-
-
-  }
-  else{
-
+  } else {
     res.send({
-      "error":true,
-      "message":"invalid game"
-    })
+      error: true,
+      message: "invalid game",
+    });
   }
   // res.send(validate(req.params.gameid));
 });
 
 
 
-
-
-
+app.post('/hostGame', {
+schema: {
+ body: {
+type: 'object',
+properties: {
+  'gameid': { type: 'string' },
+  'amount': { type: 'integer',minimum: 10, maximum: 2000},
+ //  email: { type: 'string', format: 'email' }, 
+  //  age: { type: 'integer' }, 
+  //  mobile: { type: 'string', minLength: 10 }, 
+},
+ required: ['gameid','amount'], 
+    }, 
+  },
+   },hostGame); 
 
 // hey
-
 
 const port = 80;
 // ssh -i /Users/vishnu/Downloads/login.pem   ec2-user@ec2-13-53-190-15.eu-north-1.compute.amazonaws.comapp.listen(port).then(() => {
 
-app.listen(port).then(() => {
+app.listen(port,"0.0.0.0").then(() => {
   connectToMongo();
   connectmqtt();
   // end
