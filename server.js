@@ -215,6 +215,7 @@ const port = 80;
 app.listen(port).then(() => {
   connectToMongo();
   connectmqtt();
+  // end
 
   // updateBalanceNotifier();
 });
