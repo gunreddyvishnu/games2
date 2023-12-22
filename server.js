@@ -221,13 +221,12 @@ properties: {
 
 // hey
 
-const port = 80;
-// ssh -i /Users/vishnu/Downloads/login.pem   ec2-user@ec2-13-53-190-15.eu-north-1.compute.amazonaws.comapp.listen(port).then(() => {
+const port = 3000;
 
 app.listen(port,"0.0.0.0").then(() => {
   connectToMongo();
   connectmqtt();
   // end
-
+  // sudo ssh -i /Users/vishnu/Downloads/login\ \(1\).pem  ec2-user@ec2-54-221-140-192.compute-1.amazonaws.com
   // updateBalanceNotifier();
 });
