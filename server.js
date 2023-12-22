@@ -210,7 +210,7 @@ app.get('/games/:gameid', (req, res) => {
 // hey
 
 
-const port = 3000;
+const port = 80;
 // ssh -i /Users/vishnu/Downloads/login.pem   ec2-user@ec2-13-53-190-15.eu-north-1.compute.amazonaws.comapp.listen(port).then(() => {
 
 app.listen(port).then(() => {
