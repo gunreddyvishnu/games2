@@ -21,6 +21,7 @@ const {
   verifylogin,
   validateToken,
   registeruser,
+  updateprofile
 } = require("./modules/auth");
 
 const { generateRandomString, validate } = require("./modules/services");
@@ -122,17 +123,98 @@ app.post(
 
 
 
+/// Update User data api
+
+
+app.post('/updateprofile', {
+schema: {
+ body: {
+type: 'object',
+properties: {
+
+  'dp': { type: 'string' },
+
+},
+ required: ['dp'], 
+    }, 
+  },
+   },async (req, res) => { 
+
+    const token = req.headers["authorization"];
+
+    var userdata = await validateToken(token);
+
+    if (userdata) {
+      // res.send(userdata);
+
+
+   res.send(await updateprofile({
+    "uid":userdata["uid"],
+    "dp":req.body["dp"]
+   }))
+
+    } else {
+      res.status(403).send({ status: 403, err: "Invalid token" });
+    }
+
+   });
+   
+
+/// Get Game Details Api   { Topic[id] , Thumbnail , Discription }
+
+
+
+// app.get('/games',function(re))
+
+
+app.get('/games/:gameid', (req, res) => {
+  var gameid=req.params.gameid;
+
+
+  if(validate(gameid)){
+
+    if(gameid=="Ludo"){
+      
+        res.send({
+          "error":false,
+          "data":{
+
+"thumbnail":"Ludi King Betting",
+"name":"",
+"description":""
+
+          }
+        })
+
+
+    }
+
+
+  }
+  else{
+
+    res.send({
+      "error":true,
+      "message":"invalid game"
+    })
+  }
+  // res.send(validate(req.params.gameid));
+});
+
+
+
+
 
 
 
 // hey
 
 
-const port = process.env.PORT || 3000;
-
+const port = 80;
+// ssh -i /Users/vishnu/Downloads/login.pem   ec2-user@ec2-13-53-190-15.eu-north-1.compute.amazonaws.com
 app.listen(port).then(() => {
   connectToMongo();
   connectmqtt();
 
-  updateBalanceNotifier();
+  // updateBalanceNotifier();
 });

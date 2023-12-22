@@ -30,7 +30,17 @@ async function validateToken(token) {
         if (validate(uid)) {
           var userdetails = db.collection("users").findOne({
             uid: uid,
-          });
+          },
+          
+          {
+            projection:{
+              "_id": 0,
+        
+          }
+
+          }
+          
+          );
 
           if (validate(userdetails)) {
             return userdetails;
@@ -272,9 +282,84 @@ async function registeruser(data) {
   }
 }
 
+
+
+
+
+async function updateprofile(data){
+
+
+if(validate(data["uid"]&&data["dp"])){
+
+
+// await db.collection("users").up
+
+try{
+  var updatestatus=await db.collection("users").updateOne(
+    {
+      // find
+      
+      "uid":data["uid"]
+      },
+      {
+        $set: {
+      
+          "dp":data["dp"]
+        //  update values
+        },
+      }
+  );
+    
+    
+    if(updatestatus.modifiedCount>0){
+    return {
+      "error":false,
+      "message":"Profile data updated"
+    }
+    
+    }
+    else{
+      return {
+        "error":true,
+        "message":"Unknown Error"
+      }
+    }
+    
+}
+catch(ee){
+
+  console.log(ee);
+
+
+  return {
+    "error":true,
+    "message":"Unknown Error"
+  }
+}
+}
+else{
+
+  return {
+    "error":true,
+    "message":"Unknown Error"
+  }
+}
+
+
+
+
+}
+
+
+
+
+
+
+
 exports.login = login;
 exports.verifylogin = verifylogin;
 
 exports.validateToken = validateToken;
 
 exports.registeruser = registeruser;
+exports.updateprofile=updateprofile;
